@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cv63mk1mectum"
+path="res://.godot/imported/City Streets.wav-a3572fe7f2812f4eae0c8708c0135333.sample"
+
+[deps]
+
+source_file="res://wwise/Originals/Plugins/iZotope Hybrid Reverb/City Streets.wav"
+dest_files=["res://.godot/imported/City Streets.wav-a3572fe7f2812f4eae0c8708c0135333.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

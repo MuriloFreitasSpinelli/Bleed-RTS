@@ -1,0 +1,86 @@
+[gd_scene load_steps=18 format=3 uid="uid://dmaeq4yeqg4mc"]
+
+[ext_resource type="Script" uid="uid://c44k2lkcoksic" path="res://game/ui/siege/siege_ui_manager.gd" id="1_i703c"]
+[ext_resource type="Script" uid="uid://4tow1uisj7bc" path="res://data/army/army_data.gd" id="2_503qj"]
+[ext_resource type="Script" uid="uid://bjoh28wf8drf8" path="res://game/ui/siege/unit_selector.gd" id="2_ues8j"]
+[ext_resource type="Script" uid="uid://cl5dwfeo7x6qi" path="res://data/unit/unit_data.gd" id="3_3fk70"]
+[ext_resource type="PackedScene" uid="uid://b40hve4lnx13k" path="res://game/ui/siege/unit_button.tscn" id="3_6mlyk"]
+[ext_resource type="Script" uid="uid://cbwbnrm104ea2" path="res://data/unit/boid_data.gd" id="4_003fc"]
+[ext_resource type="Script" uid="uid://c5iw1mak7bmwk" path="res://data/unit/rigidbody_data.gd" id="5_m7nqi"]
+[ext_resource type="Script" uid="uid://cs2ncmpmqv3oa" path="res://data/unit/sight_data.gd" id="6_47k8t"]
+[ext_resource type="Script" uid="uid://cdxfy17sw1yf7" path="res://data/unit/spawn_data.gd" id="7_w614e"]
+[ext_resource type="Script" uid="uid://dm4sur7v50tcd" path="res://data/unit/stats_data.gd" id="8_1vty8"]
+
+[sub_resource type="Resource" id="Resource_eiqcr"]
+script = ExtResource("4_003fc")
+metadata/_custom_type_script = "uid://cbwbnrm104ea2"
+
+[sub_resource type="Resource" id="Resource_8q1op"]
+script = ExtResource("5_m7nqi")
+metadata/_custom_type_script = "uid://c5iw1mak7bmwk"
+
+[sub_resource type="Resource" id="Resource_sbeyj"]
+script = ExtResource("6_47k8t")
+metadata/_custom_type_script = "uid://cs2ncmpmqv3oa"
+
+[sub_resource type="Resource" id="Resource_66ysc"]
+script = ExtResource("7_w614e")
+metadata/_custom_type_script = "uid://cdxfy17sw1yf7"
+
+[sub_resource type="Resource" id="Resource_i0isf"]
+script = ExtResource("8_1vty8")
+metadata/_custom_type_script = "uid://dm4sur7v50tcd"
+
+[sub_resource type="Resource" id="Resource_mc4f1"]
+script = ExtResource("3_3fk70")
+rigidbody_data = SubResource("Resource_8q1op")
+sight_data = SubResource("Resource_sbeyj")
+spawn_data = SubResource("Resource_66ysc")
+boid_data = SubResource("Resource_eiqcr")
+stats_data = SubResource("Resource_i0isf")
+metadata/_custom_type_script = "uid://cl5dwfeo7x6qi"
+
+[sub_resource type="Resource" id="Resource_cfwsr"]
+script = ExtResource("2_503qj")
+units = Array[ExtResource("3_3fk70")]([SubResource("Resource_mc4f1")])
+metadata/_custom_type_script = "uid://4tow1uisj7bc"
+
+[node name="SiegeUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i703c")
+army_data = SubResource("Resource_cfwsr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Header"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Footer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="UnitSelector" type="HBoxContainer" parent="VBoxContainer/Footer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ues8j")
+
+[node name="Control" parent="VBoxContainer/Footer/UnitSelector" instance=ExtResource("3_6mlyk")]
+layout_mode = 2

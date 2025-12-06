@@ -1,0 +1,61 @@
+[gd_scene load_steps=13 format=3 uid="uid://b8w3huu5nhlvb"]
+
+[ext_resource type="PackedScene" uid="uid://bmqnweac0mx3w" path="res://Unit/unit_body.tscn" id="1_lr8o5"]
+[ext_resource type="Script" uid="uid://dddhk6w4fels6" path="res://WorldObjects/boundary.gd" id="2_vpiug"]
+[ext_resource type="PackedScene" uid="uid://dmaeq4yeqg4mc" path="res://UI/SiegeUI/siege_ui.tscn" id="3_m3wmj"]
+[ext_resource type="Script" uid="uid://4tow1uisj7bc" path="res://Army/army_data.gd" id="4_uhfqc"]
+[ext_resource type="Script" uid="uid://vbqcfin226yq" path="res://Unit/Data/unit_data.gd" id="5_382wa"]
+[ext_resource type="Resource" uid="uid://revx7ph5fdti" path="res://Unit/Goobers/edward.tres" id="6_382wa"]
+[ext_resource type="Script" uid="uid://chbax7o7duo6u" path="res://UI/Siege/spawner.gd" id="7_382wa"]
+[ext_resource type="Resource" uid="uid://crhpvexh6dosy" path="res://Unit/Goobers/big_bog.tres" id="7_seu73"]
+
+[sub_resource type="Gradient" id="Gradient_vpiug"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.305085)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nkl0f"]
+gradient = SubResource("Gradient_vpiug")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkl0f"]
+size = Vector2(1102, 440)
+
+[sub_resource type="Resource" id="Resource_ty8mq"]
+script = ExtResource("4_uhfqc")
+units = Array[ExtResource("5_382wa")]([ExtResource("6_382wa"), ExtResource("7_seu73")])
+max_army_size = 10
+metadata/_custom_type_script = "uid://4tow1uisj7bc"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(2.751, 1500)
+texture = SubResource("GradientTexture1D_nkl0f")
+
+[node name="UnitBody2" parent="." instance=ExtResource("1_lr8o5")]
+position = Vector2(0, 2)
+
+[node name="UnitBody" parent="." instance=ExtResource("1_lr8o5")]
+position = Vector2(225, 54)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Boundary" type="Area2D" parent="."]
+script = ExtResource("2_vpiug")
+impulse_gain = 20.0
+max_impulse = 200.0
+metadata/_custom_type_script = "uid://dddhk6w4fels6"
+
+[node name="Bounds" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(-2, 77)
+shape = SubResource("RectangleShape2D_nkl0f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SiegeUI" parent="CanvasLayer" instance=ExtResource("3_m3wmj")]
+army_data = SubResource("Resource_ty8mq")
+
+[node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("siege_ui")]
+script = ExtResource("7_382wa")
+siege_ui = NodePath("../CanvasLayer/SiegeUI")
+metadata/_custom_type_script = "uid://chbax7o7duo6u"

@@ -1,0 +1,98 @@
+[gd_scene load_steps=21 format=3 uid="uid://dnkx0ds3o8gad"]
+
+[ext_resource type="Script" uid="uid://chbax7o7duo6u" path="res://components/siege/spawner.gd" id="1_6le04"]
+[ext_resource type="PackedScene" uid="uid://dmaeq4yeqg4mc" path="res://game/ui/siege/siege_ui.tscn" id="2_u1i5y"]
+[ext_resource type="Script" uid="uid://4tow1uisj7bc" path="res://data/army/army_data.gd" id="3_2ednn"]
+[ext_resource type="Script" uid="uid://dddhk6w4fels6" path="res://composites/world/boundary.gd" id="3_u1i5y"]
+[ext_resource type="Script" uid="uid://cl5dwfeo7x6qi" path="res://data/unit/unit_data.gd" id="4_50sh4"]
+[ext_resource type="Script" uid="uid://cbwbnrm104ea2" path="res://data/unit/boid_data.gd" id="5_wkqdp"]
+[ext_resource type="Script" uid="uid://c5iw1mak7bmwk" path="res://data/unit/rigidbody_data.gd" id="6_jgln8"]
+[ext_resource type="Script" uid="uid://cs2ncmpmqv3oa" path="res://data/unit/sight_data.gd" id="7_d2an1"]
+[ext_resource type="Script" uid="uid://cdxfy17sw1yf7" path="res://data/unit/spawn_data.gd" id="8_30jov"]
+[ext_resource type="Script" uid="uid://dm4sur7v50tcd" path="res://data/unit/stats_data.gd" id="9_5hfot"]
+
+[sub_resource type="Resource" id="Resource_onyhn"]
+script = ExtResource("5_wkqdp")
+cohesion_range = 1.0
+cohesion_multiplier = 1.0
+separation_range = 1.0
+separation_multiplier = 1.0
+alignment_range = 11.0
+alignment_multiplier = 1.0
+correction_multiplier = 1.0
+normal_force = Vector2(1, 0)
+max_force = 1.0
+rotation_speed = 1.0
+metadata/_custom_type_script = "uid://cbwbnrm104ea2"
+
+[sub_resource type="Resource" id="Resource_1ah2c"]
+script = ExtResource("6_jgln8")
+metadata/_custom_type_script = "uid://c5iw1mak7bmwk"
+
+[sub_resource type="Resource" id="Resource_m1suk"]
+script = ExtResource("7_d2an1")
+view_range = 100.0
+view_angle = 50.0
+metadata/_custom_type_script = "uid://cs2ncmpmqv3oa"
+
+[sub_resource type="Resource" id="Resource_gmr0h"]
+script = ExtResource("8_30jov")
+cost = 10
+cooldown = 10.0
+amount = 2
+metadata/_custom_type_script = "uid://cdxfy17sw1yf7"
+
+[sub_resource type="Resource" id="Resource_c16xg"]
+script = ExtResource("9_5hfot")
+speed = 1
+metadata/_custom_type_script = "uid://dm4sur7v50tcd"
+
+[sub_resource type="Resource" id="Resource_dlkpj"]
+script = ExtResource("4_50sh4")
+rigidbody_data = SubResource("Resource_1ah2c")
+sight_data = SubResource("Resource_m1suk")
+spawn_data = SubResource("Resource_gmr0h")
+boid_data = SubResource("Resource_onyhn")
+stats_data = SubResource("Resource_c16xg")
+metadata/_custom_type_script = "uid://cl5dwfeo7x6qi"
+
+[sub_resource type="Resource" id="Resource_ogech"]
+script = ExtResource("3_2ednn")
+units = Array[ExtResource("4_50sh4")]([SubResource("Resource_dlkpj")])
+metadata/_custom_type_script = "uid://4tow1uisj7bc"
+
+[sub_resource type="Gradient" id="Gradient_vpiug"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.305085)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ontmu"]
+gradient = SubResource("Gradient_vpiug")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ednn"]
+size = Vector2(1000, 436)
+
+[node name="Siege" type="Node2D"]
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("1_6le04")
+metadata/_custom_type_script = "uid://chbax7o7duo6u"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SiegeUI" parent="CanvasLayer" instance=ExtResource("2_u1i5y")]
+army_data = SubResource("Resource_ogech")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(2.751, 1500)
+texture = SubResource("GradientTexture1D_ontmu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Boundary" type="Area2D" parent="."]
+script = ExtResource("3_u1i5y")
+metadata/_custom_type_script = "uid://dddhk6w4fels6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
+position = Vector2(0, 82)
+shape = SubResource("RectangleShape2D_2ednn")

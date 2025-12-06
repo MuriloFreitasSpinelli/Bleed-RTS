@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://dwh1avuc8m4wi"]
+
+[ext_resource type="Script" uid="uid://r7nfkrts1ocy" path="res://composites/unit/unit_composite.gd" id="1_11nph"]
+[ext_resource type="Script" uid="uid://cl2326k04gvt3" path="res://components/unit/state/state_component.gd" id="2_4wpau"]
+[ext_resource type="Script" uid="uid://c8mf8ejrrlgly" path="res://components/unit/sight/sight_component.gd" id="3_rgsg6"]
+[ext_resource type="Script" uid="uid://brudj0gw83ub3" path="res://components/unit/modifier/modifiers_component.gd" id="4_rgsg6"]
+[ext_resource type="Script" uid="uid://drcfdgcg5dymt" path="res://components/unit/audio/audio_component.gd" id="5_ujsph"]
+[ext_resource type="Script" uid="uid://bd4sh3p1hp7ip" path="res://components/unit/action/action_component.gd" id="6_22kgh"]
+[ext_resource type="Script" uid="uid://bva5jglykaj14" path="res://components/unit/visual/visual_component.gd" id="7_11nph"]
+[ext_resource type="Texture2D" uid="uid://bxgj1k5d0nvul" path="res://icon.svg" id="8_vhqe0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ujsph"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4wpau"]
+
+[node name="UnitComposite" type="RigidBody2D"]
+script = ExtResource("1_11nph")
+metadata/_custom_type_script = "uid://unwhnooi7g2c"
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ujsph")
+
+[node name="SightComponent" type="Area2D" parent="."]
+script = ExtResource("3_rgsg6")
+metadata/_custom_type_script = "uid://c8mf8ejrrlgly"
+
+[node name="ViewRange" type="CollisionShape2D" parent="SightComponent"]
+shape = SubResource("CircleShape2D_4wpau")
+
+[node name="StateComponent" type="Node" parent="."]
+script = ExtResource("2_4wpau")
+states = null
+starting_state = null
+metadata/_custom_type_script = "uid://cl2326k04gvt3"
+
+[node name="ModifiersComponent" type="Node" parent="."]
+script = ExtResource("4_rgsg6")
+metadata/_custom_type_script = "uid://brudj0gw83ub3"
+
+[node name="AudioComponent" type="Node" parent="."]
+script = ExtResource("5_ujsph")
+metadata/_custom_type_script = "uid://drcfdgcg5dymt"
+
+[node name="ActionComponent" type="Node" parent="."]
+script = ExtResource("6_22kgh")
+metadata/_custom_type_script = "uid://bd4sh3p1hp7ip"
+
+[node name="VisualComponent" type="Node2D" parent="."]
+script = ExtResource("7_11nph")
+metadata/_custom_type_script = "uid://bva5jglykaj14"
+
+[node name="Sprite2D" type="Sprite2D" parent="VisualComponent"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_vhqe0")

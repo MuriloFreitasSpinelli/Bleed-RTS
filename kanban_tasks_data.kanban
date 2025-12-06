@@ -1,0 +1,83 @@
+{
+	"categories": [
+		{
+			"uuid": "1d4ee746-d551-47fa-b382-e23125a3b276",
+			"title": "Task",
+			"color": "70bafa"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "4bceaac2-4ea0-4c0a-97d2-2ad6a1dde2f2",
+			"title": "Todo",
+			"tasks": [
+				"86562d9c-cd39-4ebe-9aac-37d511b08663",
+				"c94aa67f-5104-4352-8f91-7a13032283e5",
+				"f130e727-6ce2-4b34-a95d-280d08212fa3",
+				"b1b3621a-8b67-41da-9f66-31c29f834e40"
+			]
+		},
+		{
+			"uuid": "2bb92361-31ce-4cb6-9602-e2312091438a",
+			"title": "Doing",
+			"tasks": []
+		},
+		{
+			"uuid": "8805b908-203c-458c-88f8-302a6d44aa7d",
+			"title": "Done",
+			"tasks": [
+				"16a72d04-0cb2-4515-940d-dd25471b8ee9"
+			]
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "16a72d04-0cb2-4515-940d-dd25471b8ee9",
+			"title": "Incorporate Unit things",
+			"description": "from the base unit folder i added",
+			"category": "1d4ee746-d551-47fa-b382-e23125a3b276",
+			"steps": []
+		},
+		{
+			"uuid": "86562d9c-cd39-4ebe-9aac-37d511b08663",
+			"title": "Create Combat System",
+			"description": "No modifiers yet, only units hitting each others hp directly.",
+			"category": "1d4ee746-d551-47fa-b382-e23125a3b276",
+			"steps": []
+		},
+		{
+			"uuid": "c94aa67f-5104-4352-8f91-7a13032283e5",
+			"title": "Create Castles",
+			"description": "",
+			"category": "1d4ee746-d551-47fa-b382-e23125a3b276",
+			"steps": []
+		},
+		{
+			"uuid": "f130e727-6ce2-4b34-a95d-280d08212fa3",
+			"title": "Create Generals",
+			"description": "",
+			"category": "1d4ee746-d551-47fa-b382-e23125a3b276",
+			"steps": []
+		},
+		{
+			"uuid": "b1b3621a-8b67-41da-9f66-31c29f834e40",
+			"title": "Modifiers System",
+			"description": "Global modifiers and etc... these should somehow be applied to the units when they spawn. There are the unit modifiers which are local, and the global, and the conditional global. Then in the middle of the game they also have modifiers added to them as they go. ",
+			"category": "1d4ee746-d551-47fa-b382-e23125a3b276",
+			"steps": []
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"4bceaac2-4ea0-4c0a-97d2-2ad6a1dde2f2"
+			],
+			[
+				"2bb92361-31ce-4cb6-9602-e2312091438a"
+			],
+			[
+				"8805b908-203c-458c-88f8-302a6d44aa7d"
+			]
+		]
+	}
+}

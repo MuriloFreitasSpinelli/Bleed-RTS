@@ -1,0 +1,36 @@
+{
+ "ProjectInfo": {
+  "Project": {
+   "Name": "wwise",
+   "GUID": "{8076BC97-8618-489A-B6DF-D58AD7FA062C}",
+   "Generator": "2025.1.3.9039"
+  },
+  "CacheRoot": "../wwise/.cache",
+  "Platforms": [
+   {
+    "Name": "Linux",
+    "GUID": "{44A7B4D6-10C5-48C4-9A1A-B7DB1A0AE844}",
+    "BasePlatform": "Linux",
+    "BasePlatformGUID": "{BD0BDF13-3125-454F-8BFD-319537169F81}",
+    "Path": "../wwise/GeneratedSoundBanks/Linux"
+   },
+   {
+    "Name": "Windows",
+    "GUID": "{7C485403-C6DC-4790-B8F1-D7F005CF17CF}",
+    "BasePlatform": "Windows",
+    "BasePlatformGUID": "{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}",
+    "Path": "../wwise/GeneratedSoundBanks/Windows"
+   }
+  ],
+  "Languages": [
+   {
+    "Name": "English(US)",
+    "Id": "684519430",
+    "GUID": "{E861FF52-579E-46B9-8CAC-2FA74F688BD3}",
+    "Default": "true",
+    "UseAsStandIn": "true"
+   }
+  ],
+  "FileHash": "{94AE4933-3226-A8C0-7C9C-05DD5AFB3D74}"
+ }
+}
