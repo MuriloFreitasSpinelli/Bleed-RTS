@@ -1,10 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dmaeq4yeqg4mc"]
+[gd_scene load_steps=17 format=3 uid="uid://dmaeq4yeqg4mc"]
 
 [ext_resource type="Script" uid="uid://c44k2lkcoksic" path="res://game/ui/siege/siege_ui_manager.gd" id="1_i703c"]
-[ext_resource type="Script" uid="uid://4tow1uisj7bc" path="res://data/army/army_data.gd" id="2_503qj"]
+[ext_resource type="Script" path="res://data/army/army_data.gd" id="2_503qj"]
 [ext_resource type="Script" uid="uid://bjoh28wf8drf8" path="res://game/ui/siege/unit_selector.gd" id="2_ues8j"]
 [ext_resource type="Script" uid="uid://cl5dwfeo7x6qi" path="res://data/unit/unit_data.gd" id="3_3fk70"]
-[ext_resource type="PackedScene" uid="uid://b40hve4lnx13k" path="res://game/ui/siege/unit_button.tscn" id="3_6mlyk"]
 [ext_resource type="Script" uid="uid://cbwbnrm104ea2" path="res://data/unit/boid_data.gd" id="4_003fc"]
 [ext_resource type="Script" uid="uid://c5iw1mak7bmwk" path="res://data/unit/rigidbody_data.gd" id="5_m7nqi"]
 [ext_resource type="Script" uid="uid://cs2ncmpmqv3oa" path="res://data/unit/sight_data.gd" id="6_47k8t"]
@@ -81,6 +80,3 @@ custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_ues8j")
-
-[node name="Control" parent="VBoxContainer/Footer/UnitSelector" instance=ExtResource("3_6mlyk")]
-layout_mode = 2

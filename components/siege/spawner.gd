@@ -16,5 +16,4 @@ func _input(event: InputEvent) -> void:
 			var unit: UnitComposite = base_unit_scene.instantiate()
 			unit.load_data(unit_data)
 			unit.position = mouse_global_position
-			print("CREATED")
 			add_child(unit)

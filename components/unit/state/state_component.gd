@@ -8,6 +8,7 @@ var current_state: State
 
 func _ready() -> void:
 	unit = get_parent()
+	print(unit)
 	current_state = states.get(starting_state)
 	current_state.enter(unit)
 

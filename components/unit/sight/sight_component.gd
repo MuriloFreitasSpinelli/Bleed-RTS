@@ -59,8 +59,8 @@ func _update_neighbors() -> void:
 func _index_unit(unit: UnitComposite, by_team: Dictionary, by_layer: Dictionary) -> void:
 	"""Add unit to team and layer dictionaries"""
 	if unit.data:
-		var team: int = unit.data.body_data.team
-		var layer: int = unit.data.body_data.layer
+		var team: int = unit.data.rigidbody_data.team
+		var layer: int = unit.data.rigidbody_data.layer
 		
 		# Add to team array
 		if not by_team.has(team):
@@ -137,9 +137,9 @@ func query_neighbors(queries: Array[QueryConfig]) -> Dictionary:
 		# Get unit properties once
 		var unit_team: int = -1
 		var unit_layer: int = -1
-		if unit.data and unit.data.body_data:
-			unit_team = unit.data.body_data.team
-			unit_layer = unit.data.body_data.layer
+		if unit.data and unit.data.rigidbody_data:
+			unit_team = unit.data.rigidbody_data.team
+			unit_layer = unit.data.rigidbody_data.layer
 		
 		# Check each query against this unit
 		for i in range(queries.size()):

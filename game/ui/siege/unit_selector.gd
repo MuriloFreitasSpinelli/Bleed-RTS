@@ -11,7 +11,7 @@ func setup(ad: ArmyData):
 		print("creating")
 		var button = Button.new()
 		button.toggle_mode = true
-		button.text = u.body_data.name
+		button.text = u.name
 		button.custom_minimum_size.x = 150
 		button.toggled.connect(on_toggle.bind(button))
 		add_child(button)
@@ -24,4 +24,4 @@ func on_toggle(on_toggle: bool, b: Button):
 	if selected_button != b:
 		selected_button = b
 		selected_data = army_data.units.get(b.get_index())
-	print(selected_data.body_data.name)
+	print(selected_data.name)

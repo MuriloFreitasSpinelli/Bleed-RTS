@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwh1avuc8m4wi"]
+[gd_scene load_steps=14 format=3 uid="uid://dwh1avuc8m4wi"]
 
 [ext_resource type="Script" uid="uid://r7nfkrts1ocy" path="res://composites/unit/unit_composite.gd" id="1_11nph"]
 [ext_resource type="Script" uid="uid://cl2326k04gvt3" path="res://components/unit/state/state_component.gd" id="2_4wpau"]
 [ext_resource type="Script" uid="uid://c8mf8ejrrlgly" path="res://components/unit/sight/sight_component.gd" id="3_rgsg6"]
+[ext_resource type="Script" uid="uid://bcnfsj3hb2sry" path="res://components/unit/state/state.gd" id="4_fgi6u"]
 [ext_resource type="Script" uid="uid://brudj0gw83ub3" path="res://components/unit/modifier/modifiers_component.gd" id="4_rgsg6"]
+[ext_resource type="Script" uid="uid://c60xmgp7djp61" path="res://components/unit/state/state_boid.gd" id="5_7edcb"]
 [ext_resource type="Script" uid="uid://drcfdgcg5dymt" path="res://components/unit/audio/audio_component.gd" id="5_ujsph"]
 [ext_resource type="Script" uid="uid://bd4sh3p1hp7ip" path="res://components/unit/action/action_component.gd" id="6_22kgh"]
 [ext_resource type="Script" uid="uid://bva5jglykaj14" path="res://components/unit/visual/visual_component.gd" id="7_11nph"]
@@ -13,7 +15,12 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4wpau"]
 
+[sub_resource type="Resource" id="Resource_b6duo"]
+script = ExtResource("5_7edcb")
+metadata/_custom_type_script = "uid://c60xmgp7djp61"
+
 [node name="UnitComposite" type="RigidBody2D"]
+gravity_scale = 0.0
 script = ExtResource("1_11nph")
 metadata/_custom_type_script = "uid://unwhnooi7g2c"
 
@@ -29,8 +36,10 @@ shape = SubResource("CircleShape2D_4wpau")
 
 [node name="StateComponent" type="Node" parent="."]
 script = ExtResource("2_4wpau")
-states = null
-starting_state = null
+states = Dictionary[String, ExtResource("4_fgi6u")]({
+"boid": SubResource("Resource_b6duo")
+})
+starting_state = "boid"
 metadata/_custom_type_script = "uid://cl2326k04gvt3"
 
 [node name="ModifiersComponent" type="Node" parent="."]

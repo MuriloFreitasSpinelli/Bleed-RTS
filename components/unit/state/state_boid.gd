@@ -11,7 +11,14 @@ func tick_frame(delta: float, unit: UnitComposite) -> String:
 
 func tick_physics(delta: float, unit: UnitComposite) -> String:
 	simulate_boid(delta, unit)
-	return ""
+	var cone_see: Array[UnitComposite] = unit.sight.get_cone_units(unit.data.combat_data.attack_range, unit.data.sight_data.view_angle)
+	if cone_see.is_empty():
+		return ""
+	else:
+		for n in cone_see:
+			if n.data.rigidbody_data.team != unit.data.rigidbody_data.team:
+				return "combat"
+		return ""
 
 func exit(unit: UnitComposite):
 	pass
@@ -52,9 +59,9 @@ func cohesion(unit: UnitComposite) -> Vector2:
 	
 	var neighbors = unit.sight.get_cone_units(
 		boid_data.cohesion_range,
-		boid_data.view_cone,
+		unit.data.sight_data.view_angle,
 		false,
-		unit.data.body_data.team  # ✓ CORRECT
+		unit.data.rigidbody_data.team  # ✓ CORRECT
 	)
 	
 	if neighbors.is_empty():
@@ -75,7 +82,7 @@ func separation(unit: UnitComposite) -> Vector2:
 		boid_data.separation_range,
 		TAU,
 		false,
-		unit.data.body_data.team  # ✓ CORRECT
+		unit.data.rigidbody_data.team  # ✓ CORRECT
 	)
 	
 	if neighbors.is_empty():
@@ -101,11 +108,11 @@ func separation(unit: UnitComposite) -> Vector2:
 func alignment(unit: UnitComposite) -> Vector2:
 	var boid_data: BoidData = unit.data.boid_data
 	
-	var neighbors = unit.sight.get_cone_units(
-		boid_data.alignment_range,
-		boid_data.view_cone,
+	var neighbors = unit.sight.get_close_units(
+		boid_data.separation_range,
+		TAU,
 		false,
-		unit.data.body_data.team  # ✓ CORRECT
+		unit.data.rigidbody_data.team  # ✓ CORRECT
 	)
 	
 	if neighbors.is_empty():
